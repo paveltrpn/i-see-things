@@ -9,7 +9,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall \
 
 set(LIBS -lstdc++)
 
-set(SOURCES main.cpp
-            matrix.cpp)
+set(SOURCES main.cpp)
 
 add_executable(main ${SOURCES})
