@@ -1,6 +1,6 @@
-
-#include <iostream>
-
+//
+//#include <iostream>
+//
 #include "matrix.h"
 
 int main() {
@@ -8,7 +8,6 @@ int main() {
     foo.setIdtt();
     matrix_c<float> bar{std::move(foo)};
 
-    foo.setIdtt();
     // Constrains not satisfied for class template 'matrix_c' [with T = int]
     // matrix_c<int> baz{100, 100};
     

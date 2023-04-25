@@ -23,11 +23,8 @@ class matrix_c {
         matrix_c(matrix_c &&rhs) : rows_(0), columnes_(0), data_(nullptr) {
             rows_ = rhs.rows_;
             columnes_ = rhs.columnes_;
+            // stole just "primary" pointer!
             data_ = rhs.data_;
-            for (size_t i = 0; i < rows_; ++i) {
-                // strange felings when iterate over "unallocated" data...
-                data_[i] = rhs.data_[i];
-            }
             // is it enought to nullptr a rows pointer and not set
             // to null every column pointer? I.e. if object lost
             // "primary" pointer then every other underlying pointer
@@ -60,9 +57,6 @@ class matrix_c {
                 columnes_ = rhs.columnes_;
 
                 data_ = rhs.data_;
-                for (size_t i = 0; i < rows_; ++i) {
-                    data_[i] = rhs.data_[i];
-                }
 
                 rhs.data_ = nullptr;
                 rhs.rows_ = rhs.columnes_ = 0;
@@ -146,9 +140,14 @@ class matrix_c {
         }
 
         void deallocate() {
-            for (size_t i = 0; i < rows_; ++i) {
-                delete[] data_[i];
+            // Checking pointer to null before deleting is not necessary
+            // but in this case i don't sure is it safe to itarate across
+            // potentially not nullptr pointer and delete it's sub arrays.
+            if (data_ != nullptr) {
+                for (size_t i = 0; i < rows_; ++i) {
+                    delete[] data_[i];
+                }
+                delete[] data_;
             }
-            delete[] data_;
         }
 };
