@@ -11,19 +11,19 @@ file_c::file_c(string name) {
     fname = name;
 
     file.open(fname, ios::in);
-    
+
     if (!file) {
         throw std::runtime_error("file_c(): can't open file - " + fname + "!!!\n");
     }
 
     std::streampos cur_pos = file.tellg();
 
-    file.seekg( 0, std::ios::end );
+    file.seekg(0, std::ios::end);
     fsize = file.tellg() - cur_pos;
-    file.seekg( 0, std::ios::beg);
+    file.seekg(0, std::ios::beg);
 };
 
-file_c & file_c::operator=(file_c &&fc) {
+file_c &file_c::operator=(file_c &&fc) {
     fname = fc.fname;
     fsize = fc.fsize;
     file = move(fc.file);
@@ -43,7 +43,7 @@ file_c::~file_c() {
 void file_c::readStrings() {
     string cur_string;
 
-    while (getline(file,cur_string)) {
+    while (getline(file, cur_string)) {
         content.push_back(cur_string);
     }
 }
@@ -58,7 +58,7 @@ string file_c::getFileName() {
 
 void file_c::printAll() {
     if (!content.empty()) {
-        for (const string &str: content) {
+        for (const string &str : content) {
             cout << str << "\n";
         }
     } else {
@@ -73,7 +73,7 @@ std::pair<std::vector<std::string>, size_t> readFileToStrVec(std::string fname) 
     std::vector<std::string> content;
 
     file.open(fname, ios::in);
-    
+
     if (!file.is_open()) {
         std::cout << fmt::format("readFileToStrVec(): can't open file {0}!\n", fname);
         std::exit(0);
@@ -81,13 +81,13 @@ std::pair<std::vector<std::string>, size_t> readFileToStrVec(std::string fname) 
 
     std::streampos cur_pos = file.tellg();
 
-    file.seekg( 0, std::ios::end );
+    file.seekg(0, std::ios::end);
     fsize = file.tellg() - cur_pos;
-    file.seekg( 0, std::ios::beg); 
+    file.seekg(0, std::ios::beg);
 
-    while (getline(file,cur_string)) {
+    while (getline(file, cur_string)) {
         content.push_back(cur_string);
     }
-    
-    return std::make_pair(content, fsize); 
+
+    return std::make_pair(content, fsize);
 }

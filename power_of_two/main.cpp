@@ -1,10 +1,9 @@
 
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 // Работает для любого целочисленного аргумента
-template <typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
-bool isPowerOfTwo(T arg) {
+template <typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0> bool isPowerOfTwo(T arg) {
     return arg > 0 && (arg & (arg - 1)) == 0;
 }
 

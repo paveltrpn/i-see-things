@@ -1,41 +1,38 @@
 
-#include <iostream>
 #include <concepts>
 #include <coroutine>
 #include <exception>
+#include <iostream>
 
 class CRetObj {
     public:
         class promise_type {
             public:
                 CRetObj get_return_object() {
-                    return {
-                        .h_ = std::coroutine_handle<promise_type>::from_promise(*this)
-                    };
+                    return { .h_ = std::coroutine_handle<promise_type>::from_promise(*this) };
                 }
-                
+
                 std::suspend_never initial_suspend() {
                     return {};
                 }
-                
+
                 std::suspend_never final_suspend() noexcept {
                     return {};
                 }
 
                 void unhandled_exception() const noexcept {
-
                 }
         };
 
         std::coroutine_handle<promise_type> h_;
 
-            operator std::coroutine_handle<promise_type>() const {
-                return h_;
-            }
+        operator std::coroutine_handle<promise_type>() const {
+            return h_;
+        }
 
-            operator std::coroutine_handle<>() const {
-                return h_;
-            }
+        operator std::coroutine_handle<>() const {
+            return h_;
+        }
 };
 
 CRetObj counter() {

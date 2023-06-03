@@ -2,12 +2,12 @@
 #ifndef __smart_ptr_h__
 #define __smart_ptr_h__
 
-#include <iostream>
-#include <functional>
 #include <cstring>
+#include <functional>
+#include <iostream>
 #include <string>
 
-constexpr size_t block = 1024*1024*100; // exactly 100 megabytes
+constexpr size_t block = 1024 * 1024 * 100;  // exactly 100 megabytes
 
 using namespace std;
 
@@ -26,7 +26,7 @@ class houndredMb_c {
 
         ~houndredMb_c() {
             delete[] houndredMb;
-            
+
             std::cout << "houndredMb_c(): 100 Mb freed in " << whichOne << " store!!!\n";
 
             whichOne = whichOne - 1;

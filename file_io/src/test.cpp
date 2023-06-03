@@ -4,7 +4,6 @@
 #include "text_read.h"
 
 int main(int argc, char **argv) {
-
     auto foo = textRead1("assets/raven.txt");
     std::cout << "  textRead1:\n" << foo.substr(10, 110) << "\n";
 

@@ -2,13 +2,13 @@
 #ifndef __common_h__
 #define __common_h__
 
-#include <iostream>
-#include <functional>
 #include <cstring>
-#include <string>
+#include <functional>
+#include <iostream>
 #include <memory>
+#include <string>
 
-constexpr size_t block = 1024*1024*1024; // exactly one gigabyte
+constexpr size_t block = 1024 * 1024 * 1024;  // exactly one gigabyte
 
 using namespace std;
 
@@ -37,7 +37,8 @@ class oneGb_c {
         oneGb_c(string name, oneGb_c&& from) {
             myName = name;
 
-            cout << "oneGb_c(): one gigabyte moved from " << from.myName << " to " << "name " << name << "\n";
+            cout << "oneGb_c(): one gigabyte moved from " << from.myName << " to "
+                 << "name " << name << "\n";
             oneGb = move(from.oneGb);
         }
 
@@ -45,7 +46,8 @@ class oneGb_c {
         oneGb_c& operator=(oneGb_c&& from) {
             oneGb = std::move(from.oneGb);
 
-            // Возвращаем текущий объект, чтобы иметь возможность связать в цепочку выполнение нескольких операций присваивания
+            // Возвращаем текущий объект, чтобы иметь возможность связать в цепочку выполнение
+            // нескольких операций присваивания
             return *this;
         };
 

@@ -6,8 +6,8 @@ export class mtrx3 {
         float data[16];
 
         mtrx3() {
-
         }
 
-        ~mtrx3() {}
+        ~mtrx3() {
+        }
 };

@@ -1,23 +1,23 @@
 
 // Определена функция с сигнатурой:
-// 
+//
 // void do_something(bool a, int b, std::string_view c)
-// 
-// Определить функцию, принимающую в произвольном порядке аргументы типов bool, int, std::string_view и вызывающую 
-// функцию do_something с переданными параметрами в качестве аргументов.
-// https://habr.com/ru/post/593429/
+//
+// Определить функцию, принимающую в произвольном порядке аргументы типов bool, int,
+// std::string_view и вызывающую функцию do_something с переданными параметрами в качестве
+// аргументов. https://habr.com/ru/post/593429/
 
 #include <iostream>
 #include <string>
-#include <string_view>
 #include <tuple>
+
+#include <string_view>
 
 void do_something(bool a, int b, std::string_view c) {
     std::cout << c;
 }
 
-template<typename... Ts>
-void wrapper1(Ts&&... args) {
+template <typename... Ts> void wrapper1(Ts &&...args) {
     static_assert(sizeof...(args) == 3, "Invalid number of arguments");
 
     std::tuple<bool, bool, bool> is_arg_bound;
@@ -51,9 +51,8 @@ void wrapper1(Ts&&... args) {
     std::apply(do_something, f_args);
 }
 
-template<typename R, typename T, typename... Ts>
-decltype(auto) get_arg_of_type(T&& arg, Ts&&... args)
-{
+template <typename R, typename T, typename... Ts>
+decltype(auto) get_arg_of_type(T &&arg, Ts &&...args) {
     using arg_type = typename std::remove_reference<decltype(arg)>::type;
 
     if constexpr (std::is_same<arg_type, R>::value) {
@@ -61,13 +60,12 @@ decltype(auto) get_arg_of_type(T&& arg, Ts&&... args)
     } else if constexpr (sizeof...(args) > 0) {
         return get_arg_of_type<R>(std::forward<Ts>(args)...);
     } else {
-        static_assert(std::is_void<decltype(arg)>::value, "An argument with the specified type was not found");
+        static_assert(std::is_void<decltype(arg)>::value,
+                      "An argument with the specified type was not found");
     }
 }
 
-template<typename... Ts>
-void wrapper2(Ts&&... args)
-{
+template <typename... Ts> void wrapper2(Ts &&...args) {
     static_assert(sizeof...(args) == 3, "Invalid number of arguments");
 
     do_something(get_arg_of_type<bool>(std::forward<Ts>(args)...),

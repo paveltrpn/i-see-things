@@ -1,7 +1,7 @@
 
-#include <memory>
-#include <iostream>
 #include <functional>
+#include <iostream>
+#include <memory>
 #include <string>
 
 #include "smart_ptr.h"
@@ -9,18 +9,19 @@
 using namespace std;
 
 void shared_ptrAlloc(const std::function<string()> F, size_t countOf) {
-    // Note that you can't use a shared pointer the same way as a pointer you'd get from new[], 
-    // because std::shared_ptr (unlike std::unique_ptr, for example) does not provide operator[]. 
+    // Note that you can't use a shared pointer the same way as a pointer you'd get from new[],
+    // because std::shared_ptr (unlike std::unique_ptr, for example) does not provide operator[].
     // You'd have to dereference it: (*buffer)[n] = 'a';
-    // Отсюда - https://stackoverflow.com/questions/13794447/can-you-allocate-an-array-with-something-equivalent-to-make-shared
+    // Отсюда -
+    // https://stackoverflow.com/questions/13794447/can-you-allocate-an-array-with-something-equivalent-to-make-shared
 
     // Не получается выделить массив объектов с помощью make_shared(),
     // компилятор выдаёт здоровый непонятный трейс
-    
+
     // auto foo = std::make_shared<houndredMb_c[]>(countOf);
 
     // А вот кнструктором выделить можно.
-    
+
     auto foo = shared_ptr<houndredMb_c[]>(new houndredMb_c[countOf]);
 
     while (true) {
@@ -78,5 +79,4 @@ void unique_ptrAlloc(const std::function<string()> F, size_t countOf) {
 }
 
 void weak_ptrAlloc() {
-
 }

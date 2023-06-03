@@ -19,24 +19,23 @@ void out(int arg) {
 
 class CoroStateMachine {
     public:
-        CoroStateMachine(int z): z_(z), label_(0) {
-
+        CoroStateMachine(int z) : z_(z), label_(0) {
         }
-        
+
         void Resume() {
-            switch(label_) {
-                case 0:
-                    a_ = foo();
-                    label_ = 1;
-                    return;
-                case 1:
-                    b_ = bar(a_, z_);
-                    label_ = 2;
-                    return;
-                case 2:
-                    c_ = baz(a_, b_);
-                    out(c_);
-                    return;
+            switch (label_) {
+            case 0:
+                a_ = foo();
+                label_ = 1;
+                return;
+            case 1:
+                b_ = bar(a_, z_);
+                label_ = 2;
+                return;
+            case 2:
+                c_ = baz(a_, b_);
+                out(c_);
+                return;
             }
         }
 
@@ -65,11 +64,10 @@ void coro(int z) {
 int main() {
     coro(50);
 
-    CoroStateMachine foo{50};
+    CoroStateMachine foo{ 50 };
     foo.Resume();
     foo.Resume();
     foo.Resume();
-
 
     return 0;
 }

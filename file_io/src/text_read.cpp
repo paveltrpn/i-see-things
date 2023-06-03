@@ -1,6 +1,6 @@
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <vector>
 
@@ -28,13 +28,13 @@ std::string textRead2(std::string fname) {
     std::string textFileString;
     std::ifstream inFile;
 
-    inFile.open(fname, std::ios::in); 
+    inFile.open(fname, std::ios::in);
 
     if (!inFile) {
         std::cout << "textRead2(): ERROR! Can't find file " << fname << "\n";
         std::exit(1);
     }
-            
+
     std::stringstream strStream;
     strStream << inFile.rdbuf();
 
@@ -43,7 +43,7 @@ std::string textRead2(std::string fname) {
     return textFileString;
 }
 
-// Читаем текстовый файл построчно, возвращаем из функции пару с 
+// Читаем текстовый файл построчно, возвращаем из функции пару с
 // вектором строк и размером файла.
 std::pair<std::vector<std::string>, size_t> textReadToStrVec(std::string fname) {
     std::ifstream file;
@@ -52,7 +52,7 @@ std::pair<std::vector<std::string>, size_t> textReadToStrVec(std::string fname) 
     std::vector<std::string> content;
 
     file.open(fname, std::ios::in);
-    
+
     if (!file.is_open()) {
         std::cout << "textReadToStrVec(): ERROR! Can't find file " << fname << "\n";
         std::exit(0);
@@ -60,29 +60,29 @@ std::pair<std::vector<std::string>, size_t> textReadToStrVec(std::string fname) 
 
     std::streampos cur_pos = file.tellg();
 
-    file.seekg( 0, std::ios::end );
+    file.seekg(0, std::ios::end);
     fsize = file.tellg() - cur_pos;
-    file.seekg( 0, std::ios::beg); 
+    file.seekg(0, std::ios::beg);
 
-    while (getline(file,cur_string)) {
+    while (getline(file, cur_string)) {
         content.push_back(cur_string);
     }
-    
-    return std::make_pair(content, fsize); 
+
+    return std::make_pair(content, fsize);
 }
 
 std::string textRead3(std::string fname) {
     std::ifstream inFile;
-	std::string rt;
+    std::string rt;
 
-	inFile.open(fname);
+    inFile.open(fname);
 
-	if (!inFile) {
-		std::cout << "compileShader(): error! can't open file - " << fname << "\n";
-		std::exit(0);
-	}
+    if (!inFile) {
+        std::cout << "compileShader(): error! can't open file - " << fname << "\n";
+        std::exit(0);
+    }
 
-	rt = std::string{std::istreambuf_iterator<char>{inFile}, {}};
+    rt = std::string{ std::istreambuf_iterator<char>{ inFile }, {} };
 
     inFile.close();
 

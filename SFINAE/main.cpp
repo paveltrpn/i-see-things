@@ -17,7 +17,9 @@ int main() {
     std::cout << std::format("foo is - {}\n", has_typedef_foobar<foo>::value);
     std::cout << std::format("bar is - {}\n", has_typedef_foobar<bar>::value);
 
-    float one;
+    float one = 3.14f;
+    // first template parameter associated with class template is practically
+    // dummy, needed for satisfy class template.
     // called "no" because template parametrized by foo with not float& argument
     has_typedef_foobar<bar>::test<foo>(2.0f);
     // called "yes" because template parametrized by foo with exactly float& argument

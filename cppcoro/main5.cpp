@@ -1,10 +1,9 @@
 
-#include <cstdint>
-#include <iostream>
 #include <concepts>
 #include <coroutine>
-
+#include <cstdint>
 #include <exception>
+#include <iostream>
 class CRetObj {
     public:
         class promise_type {
@@ -16,21 +15,18 @@ class CRetObj {
                 }
 
                 CRetObj get_return_object() {
-                    return {
-                        .h_ = std::coroutine_handle<promise_type>::from_promise(*this)
-                    };
+                    return { .h_ = std::coroutine_handle<promise_type>::from_promise(*this) };
                 }
 
                 std::suspend_never initial_suspend() {
                     return {};
                 }
 
-                std::suspend_always final_suspend() noexcept { 
+                std::suspend_always final_suspend() noexcept {
                     return {};
                 }
 
                 void unhandled_exception() {
-
                 }
 
                 std::suspend_always yield_value(int32_t value) {
@@ -39,11 +35,10 @@ class CRetObj {
                 }
 
                 void return_void() {
-
                 }
         };
 
-        std::coroutine_handle<promise_type> h_;  
+        std::coroutine_handle<promise_type> h_;
 };
 
 CRetObj counter() {
@@ -58,7 +53,7 @@ int main() {
     auto h = counter().h_;
     auto &promise = h.promise();
     while (!h.done()) {
-        std::cout << "counter: " << promise.value_ << std:: endl;
+        std::cout << "counter: " << promise.value_ << std::endl;
         h();
     }
     h.destroy();
