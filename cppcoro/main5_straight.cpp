@@ -6,19 +6,19 @@
 #include <future>
 #include <iostream>
 
-struct resumable {
+struct CRetObj {
     struct promise_type;
     std::coroutine_handle<promise_type> h_;
 };
 
-struct resumable::promise_type {
+struct CRetObj::promise_type {
     int32_t value_;
 
     ~promise_type() {
         std::cout << "promise_type destryed" << std::endl;
     }
 
-    resumable get_return_object() {
+    CRetObj get_return_object() {
         return { .h_ = std::coroutine_handle<promise_type>::from_promise(*this) };
     }
 
@@ -43,7 +43,7 @@ struct resumable::promise_type {
 };
 
 
-resumable counter() {
+CRetObj counter() {
     for (int32_t i = 0; i < 3; ++i) {
         co_yield i;
     }
@@ -52,8 +52,8 @@ resumable counter() {
 }
 
 int main() {
-    resumable coro = counter();
-    auto h = coro.h_;
+    CRetObj retObj = counter();
+    auto h = retObj.h_;
     auto &promise = h.promise();
 
     while (!h.done()) {
