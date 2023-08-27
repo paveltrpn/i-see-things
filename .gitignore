@@ -1,6 +1,2 @@
-*.o
-*.pcm
-*.exe
-main
-*/build
-a.out
+.vscode
+build*

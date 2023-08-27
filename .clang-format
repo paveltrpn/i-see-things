@@ -22,7 +22,7 @@ ContinuationIndentWidth: 2
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: No
-AlwaysBreakTemplateDeclarations: No
+AlwaysBreakTemplateDeclarations: Yes
 AlignEscapedNewlines: DontAlign
 BinPackArguments: false
 BraceWrapping:

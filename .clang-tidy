@@ -24,7 +24,3 @@ Checks: >
   -bugprone-unused-return-value,
   -misc-misplaced-const,
   -misc-no-recursion,
-  -misc-unused-parameters,
-  -modernize-macro-to-enum,
-  -performance-no-int-to-ptr,
-  -unused-includes,

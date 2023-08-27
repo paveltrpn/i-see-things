@@ -11,12 +11,12 @@ class Foo {
         friend std::ostream &operator<<(std::ostream &os, Foo &rhs);
 };
 
-std::ostream &operator<<(std::ostream &os, Foo &rhs) {
+auto operator<<(std::ostream &os, Foo &rhs) -> std::ostream & {
     os << rhs.a_ << " " << rhs.b_ << " " << rhs.c_;
     return os;
 }
 
-int main() {
+auto main() -> int {
     Foo one(100, 211, 233);
     Foo two(one);
     Foo three = two;
