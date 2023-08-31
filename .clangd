@@ -9,6 +9,3 @@ InlayHints:
   Enabled: Yes
   ParameterNames: No
   DeducedTypes: Yes
-
-Diagnostics:
-  Suppress:
