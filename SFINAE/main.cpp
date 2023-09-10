@@ -7,7 +7,7 @@
 template <typename T> const bool has_typedef_foobar<T>::value = (sizeof(test<T>(0)) == sizeof(yes));
 
 struct foo {
-        typedef float foobar;
+        using foobar = float;
 };
 
 struct bar {};
