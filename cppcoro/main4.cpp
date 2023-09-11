@@ -4,7 +4,8 @@
 #include <exception>
 #include <iostream>
 
-template <typename PromiseType> class CGetPromise {
+template <typename PromiseType>
+class CGetPromise {
     public:
         PromiseType *p_;
 

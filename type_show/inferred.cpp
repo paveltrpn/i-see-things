@@ -4,7 +4,8 @@
 #include <iostream>
 #include <vector>
 
-template <class Type> struct S;
+template <class Type>
+struct S;
 
 class moveable_c {
     public:

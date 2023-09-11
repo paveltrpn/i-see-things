@@ -4,7 +4,8 @@
 
 #include "old_sfinae.h"
 
-template <typename T> const bool has_typedef_foobar<T>::value = (sizeof(test<T>(0)) == sizeof(yes));
+template <typename T>
+const bool has_typedef_foobar<T>::value = (sizeof(test<T>(0)) == sizeof(yes));
 
 struct foo {
         using foobar = float;

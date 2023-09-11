@@ -1,5 +1,5 @@
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     int value = 10;
     const int* constPtr = &value;
     int* const ptrConst = &value;

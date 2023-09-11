@@ -37,7 +37,8 @@ void refrefConcept(const auto& inParam) {
     std::cout << "\n";
 }
 
-template <typename T> void refrefConceptOld(T inParam) {
+template <typename T>
+void refrefConceptOld(T inParam) {
     std::cout << "refrefConceptOld() call.\n";
 
     for (auto&& i : inParam) {
@@ -47,7 +48,8 @@ template <typename T> void refrefConceptOld(T inParam) {
     std::cout << "\n";
 }
 
-template <typename T> void refrefTemplate(T&& inParam) {
+template <typename T>
+void refrefTemplate(T&& inParam) {
     std::cout << "refrefTemplate() call.\n";
 
     for (auto&& i : inParam) {

@@ -7,13 +7,13 @@
 #include "scope_aware_thread.h"
 
 struct functor_s {
-    std::string message;
+        std::string message;
 
-    functor_s(std::string m): message{m} {};
+        functor_s(std::string m) : message{ m } {};
 
-    void operator()() {
-        std::cout << std::format("functor done with message - {}\n", message);
-    };
+        void operator()() {
+            std::cout << std::format("functor done with message - {}\n", message);
+        };
 };
 
 void worker(const std::string &msg) {
@@ -21,13 +21,13 @@ void worker(const std::string &msg) {
 }
 
 int main(int argc, char *argv[]) {
-    std::thread foo{worker, "i'm guarded!"};
-    thread_guard_c guard{foo};
+    std::thread foo{ worker, "i'm guarded!" };
+    thread_guard_c guard{ foo };
 
     std::string msg = "i'm scoped!";
-    functor_s fworker{"i'm scoped!"};
+    functor_s fworker{ "i'm scoped!" };
 
-    sathread_c foo2{std::thread{fworker}};
+    sathread_c foo2{ std::thread{ fworker } };
 
     std::cout << std::format("main work...\n");
 

@@ -5,7 +5,7 @@
 #include <type_traits>
 
 template <typename T>
-requires std::floating_point<T>
+    requires std::floating_point<T>
 class matrix_c {
     public:
         matrix_c(size_t rws, size_t clms) : rows_(rws), columnes_(clms) {

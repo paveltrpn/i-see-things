@@ -6,7 +6,8 @@
 #include <iostream>
 #include <utility>
 
-template <typename T> struct Generator {
+template <typename T>
+struct Generator {
         struct promise_type;
         using handle_type = std::coroutine_handle<promise_type>;
 

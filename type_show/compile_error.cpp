@@ -12,13 +12,13 @@ void foo(T *const &t) {
 }
 
 int main(int argc, char *argv[]) {
-    int x{42};
-    const int& y = x;
-    const int* z = &x;
-    
+    int x{ 42 };
+    const int &y = x;
+    const int *z = &x;
+
     auto t = z;
-    
-    TD<decltype(t)> tType; // t - const int *
+
+    TD<decltype(t)> tType;  // t - const int *
 
     foo(&x);
     foo(&y);

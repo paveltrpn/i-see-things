@@ -3,37 +3,37 @@
 #include <format>
 
 struct Parent {
-    int one = 1;
-    int two = 2;
+        int one = 1;
+        int two = 2;
 
-    Parent() {
-        std::cout << "ctor Parent\n";
-    }
+        Parent() {
+            std::cout << "ctor Parent\n";
+        }
 
-    int sum() {
-        return one + two;
-    }
+        int sum() {
+            return one + two;
+        }
 
-    ~Parent() {
-        std::cout << "dtor Parent\n";
-    }
+        ~Parent() {
+            std::cout << "dtor Parent\n";
+        }
 };
 
 struct Derived : Parent {
-    int three = 3;
-    int four = 4;
+        int three = 3;
+        int four = 4;
 
-    Derived() {
-        std::cout << "ctor Derived\n";
-    }
+        Derived() {
+            std::cout << "ctor Derived\n";
+        }
 
-    int sum() {
-        return three + four;
-    }
+        int sum() {
+            return three + four;
+        }
 
-    ~Derived() {
-        std::cout << "dtor Derived\n";
-    }
+        ~Derived() {
+            std::cout << "dtor Derived\n";
+        }
 };
 
 int main(int argc, char **argv) {

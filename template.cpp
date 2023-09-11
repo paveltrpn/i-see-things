@@ -1,7 +1,8 @@
 
 #include <iostream>
 
-template <typename T> T foo(T in) {
+template <typename T>
+T foo(T in) {
     return in + 11.6;
 }
 

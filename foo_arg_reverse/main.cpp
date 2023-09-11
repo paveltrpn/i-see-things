@@ -17,7 +17,8 @@ void do_something(bool a, int b, std::string_view c) {
     std::cout << c;
 }
 
-template <typename... Ts> void wrapper1(Ts &&...args) {
+template <typename... Ts>
+void wrapper1(Ts &&...args) {
     static_assert(sizeof...(args) == 3, "Invalid number of arguments");
 
     std::tuple<bool, bool, bool> is_arg_bound;
@@ -65,7 +66,8 @@ decltype(auto) get_arg_of_type(T &&arg, Ts &&...args) {
     }
 }
 
-template <typename... Ts> void wrapper2(Ts &&...args) {
+template <typename... Ts>
+void wrapper2(Ts &&...args) {
     static_assert(sizeof...(args) == 3, "Invalid number of arguments");
 
     do_something(get_arg_of_type<bool>(std::forward<Ts>(args)...),

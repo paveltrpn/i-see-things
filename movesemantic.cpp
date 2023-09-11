@@ -14,11 +14,13 @@
 //   bool is_one_of - переменная, принимающая результат
 //   шаблонного выражения (std::is_same_v<T, Args> || ...), использующего variadic template,
 //   в котором проверяется соответствие типа Т списку типов Args. */
-template <class T, class... Args> constexpr bool is_one_of = (std::is_same_v<T, Args> || ...);
+template <class T, class... Args>
+constexpr bool is_one_of = (std::is_same_v<T, Args> || ...);
 
 //   Стандарт C++ говорит следующее [п.14.1.2]:
 //   "There is no semantic difference between class and typename in a template-parameter." */
-template <typename T> class move_sem_c {
+template <typename T>
+class move_sem_c {
     private:
         size_t allocated;
         std::unique_ptr<T[]> heap;
@@ -131,7 +133,8 @@ template <typename T> class move_sem_c {
         };
 };
 
-template <typename T> class first_foo_c {
+template <typename T>
+class first_foo_c {
     private:
         T bar;
         //   проверка на соответствие Т типу int. Работает только с одним аргументом

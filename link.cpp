@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     foo(t);
     cout << "foo(t) = " << a << "\n";
 
-    foo(t) = t;  //Присвоится корректно, a будет ссылаться на t
+    foo(t) = t;  // Присвоится корректно, a будет ссылаться на t
     cout << "foo(t) = t - " << a << "\n";
 
     return 0;

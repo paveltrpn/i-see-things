@@ -4,7 +4,7 @@
 
 namespace euclid {
 
-template<typename T>
+template <typename T>
 T abs(T a) {
     if (a < 0) {
         return -a;
@@ -13,7 +13,7 @@ T abs(T a) {
     }
 }
 
-template<typename T>
+template <typename T>
 T euclidMod(T a, T b) {
     T rt;
 
@@ -28,6 +28,6 @@ T euclidMod(T a, T b) {
     return rt;
 }
 
-}
+}  // namespace euclid
 
 #endif

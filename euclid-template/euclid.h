@@ -10,22 +10,22 @@ namespace euclid {
 
 template <typename T>
 struct GcdFunctor {
-    T operator() (T a, T b) {
-        auto max = std::max(a, b);
-        auto min = std::min(a, b);
+        T operator()(T a, T b) {
+            auto max = std::max(a, b);
+            auto min = std::min(a, b);
 
-        auto frac = euclidMod<T>(max, min);
+            auto frac = euclidMod<T>(max, min);
 
-        while (frac != 0) {
-            max = min;
-            min = frac;
-            frac = euclidMod(max, min);
-        }
+            while (frac != 0) {
+                max = min;
+                min = frac;
+                frac = euclidMod(max, min);
+            }
 
-        return min;
-    };
+            return min;
+        };
 };
 
-}
+}  // namespace euclid
 
 #endif
