@@ -25,3 +25,4 @@ Checks: >
   -misc-misplaced-const,
   -misc-no-recursion,
   -modernize-use-trailing-return-type,
+  -modernize-use-constraints
