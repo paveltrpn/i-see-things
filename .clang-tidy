@@ -24,5 +24,7 @@ Checks: >
   -bugprone-unused-return-value,
   -misc-misplaced-const,
   -misc-no-recursion,
+  -misc-unused-parameters,
   -modernize-use-trailing-return-type,
-  -modernize-use-constraints
+  -modernize-use-constraints,
+  -modernize-type-traits,

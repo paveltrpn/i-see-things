@@ -2,6 +2,7 @@
 #ifndef __euclid_enable_if__
 #define __euclid_enable_if__
 
+#include <cstddef>
 #include <iostream>
 #include <type_traits>
 
@@ -27,7 +28,7 @@ struct GcdFunctorEnif {
         };
 };
 
-template <typename T, typename = std::enable_if<(sizeof(T) == 2)>::type>
+template <typename T, typename = std::enable_if<(sizeof(T) == 2), int>::type>
 T funcByteOperate(T arg) {
     T vv{ 127 };
     return arg * vv;
@@ -43,6 +44,13 @@ template <typename T, typename = std::enable_if<(sizeof(T) == 2)>::type>
 T funcByteOperateAnotherOther(T arg) {
     T vv{ 127 };
     return arg * vv;
+}
+
+template <size_t n>
+struct square : std::integral_constant<size_t, n * n> {};
+
+static void fromFunctor() {
+    auto v = square<10>::value; // v = 100
 }
 
 }  // namespace euclid
