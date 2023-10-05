@@ -17,6 +17,7 @@ class SomeClassBad {
         SomeClassBad& operator=(SomeClassBad& val) {
             delete some_ptr;
             some_ptr = val.some_ptr;
+            return *this;
         }
 
         ~SomeClassBad() {
@@ -51,6 +52,7 @@ class SomeClassGood {
         SomeClassGood& operator=(SomeClassGood& val) {
             delete some_ptr;
             some_ptr = val.some_ptr;
+            return *this;
         }
 
         virtual ~SomeClassGood() {

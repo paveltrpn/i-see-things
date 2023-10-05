@@ -6,6 +6,8 @@
 // #define ERROR_CASE
 
 // CppCon 2014 Scott Mayers "Type deduction and why you care"
+// some "takes" from it:
+//
 // decltype(auto) uses for force type deduction of return value (for instance)
 // by decltype rules instead of auto (template) rules. In particular
 // decltype preserve a const volatile and reference qualifiers.
@@ -46,6 +48,14 @@ int main(int argc, char **argv) {
     modifyAble(bar, 5) = 101;
 
     std::cout << std::format("vector value at 5 = {}\n", bar[5]);
-    
+
+// expression {10, 20, 30} has no type!!! but...
+    auto foo_one {10}; // deduce int
+    auto foo_two = {10}; // deduce initializer_list<int>
+#ifdef ERROR_CASE
+    auto foo_tre {10, 20, 30};
+#endif
+    auto foo_for = {10, 20, 30}; // deduce initializer_list<int>
+
     return 0;
 }
