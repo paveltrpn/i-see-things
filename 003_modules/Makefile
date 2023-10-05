@@ -1,6 +1,6 @@
 
-CC := g++
-CFLAGS := -std=c++20 -fmodules-ts
+CC := clang++
+CFLAGS := -std=c++20 -stdlib=libc++ --precompile -fprebuilt-module-path=.
 
 #INCDIR := -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10
 #LFLAGS := -L /usr/lib/gcc/x86_64-linux-gnu/10
